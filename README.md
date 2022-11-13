@@ -1,7 +1,15 @@
-* python-geohash
+# python3-geohash
+
+The python-geohash library with packaging for Python 3.
+
+This is being maintained as a dependency for the DesignSpark.ESDK library.
+
+## Original README
+
+### python-geohash
 python-geohash is a fast, accurate python geohashing library.
 
-** History
+#### History
 python-geohash 0.8 introduced uint64 representation.
 
 python-geohash 0.7.1 starts supporting python3k.
@@ -10,11 +18,11 @@ python-geohash 0.3 can create C extension. If you want to use python-geohash
 without C extension, simply copy geohash.py into your system. geohash.py will
 work fine without C extension.
 
-** LICENSE
+#### LICENSE
 Code is licensed under Apache License 2.0, MIT Licence and NEW BSD License.
 You can choose one of these licences. Declarations follow:
 
-*** Apache License 2.0
+##### Apache License 2.0
    Copyright 2011 Hiroaki Kawai
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +37,7 @@ You can choose one of these licences. Declarations follow:
    See the License for the specific language governing permissions and
    limitations under the License.
 
-*** MIT License
+##### MIT License
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -48,7 +56,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-*** New BSD License
+##### New BSD License
 Copyright (c) 2011, Hiroaki Kawai
 All rights reserved.
 
