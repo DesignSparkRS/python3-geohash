@@ -1,0 +1,53 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# necessary for override_dh_auto_test
+PYVERS = $(shell pyversions -r -v)
+pythonpath = $$(ls -d $(CURDIR)/build/lib.*-$(1))
+pythonpath_dbg = $$(ls -d $(CURDIR)/build/lib_d.*-$(1) 2>/dev/null || ls -d $(CURDIR)/build/lib.*$(1)-pydebug)
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+# Workaround for #589759
+#override_dh_auto_build:
+#	dh_auto_build -- --force
+
+# FIXME
+# The first dh_install needs fixing, as the exclude pattern doesn't work and
+# setting this to the same pattern as used in the second dh_install, results in
+# neither of the shared libraries being copied
+
+override_dh_install:
+	dh_install -X"_geohash.*d*.so" "debian/tmp/*" -p python3-geohash
+	dh_install "debian/tmp/usr/lib/python3*/*-packages/*d*.so" -p python3-geohash-dbg
+	dh_install
+
+override_dh_strip:
+ifeq (,$(filter nostrip,$(DEB_BUILD_OPTIONS)))
+	dh_strip --dbg-package=python3-geohash-dbg
+endif
+
+# FIXME
+# Tests don't run as the move to using pybuild means there is no pyversions
+# command available
+
+override_dh_auto_test:
+ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))
+	set -e ;\
+	for py in $(PYVERS); do \
+		for test in test/test_*.py; do \
+			PYTHONPATH=$(call pythonpath,$$py) \
+				python$$py $$test ;\
+			PYTHONPATH=$(call pythonpath_dbg,$$py) \
+				python$$py-dbg $$test ;\
+		done \
+	done
+endif
+
+# Workaround for #593382
+override_dh_compress:
+	dh_compress -Xexamples

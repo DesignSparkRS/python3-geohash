@@ -1,0 +1,35 @@
+Source: python3-geohash
+Section: python
+Priority: optional
+Maintainer: DesignSpark Maintainers <apps@designspark.io>
+Build-Depends: debhelper (>= 11), dh-python, python3-all, python3-all-dev, python3-all-dbg
+Standards-Version: 3.9.1
+Homepage: https://github.com/DesignSparkRS/python3-geohash
+Vcs-Svn: https://github.com/DesignSparkRS/python3-geohash.git
+Vcs-Browser: https://github.com/DesignSparkRS/python3-geohash
+
+Package: python3-geohash
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python3:Depends}
+Description: fast, accurate Python geohashing library
+ python-geohash provides fast and accurate geohash encoding and decoding 
+ functionality. Geohash is a latitude/longitude geocode system (a string 
+ representation of two dimensional geometric coordinates). In addition to 
+ geohash, this module also supports the quadtree, jpgrid (JIS X 0410) and
+ jpiarea grid codes.
+
+Package: python3-geohash-dbg
+Section: debug
+Priority: optional
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python3:Depends}, python3-geohash (= ${binary:Version})
+Recommends: python3-dbg
+Description: fast, accurate Python geohashing library (debug extension)
+ python-geohash provides fast and accurate geohash encoding and decoding
+ functionality. Geohash is a latitude/longitude geocode system (a string
+ representation of two dimensional geometric coordinates). In addition to
+ geohash, this module also supports the quadtree, jpgrid (JIS X 0410) and
+ jpiarea grid codes.
+ .
+ This package contains the debugging symbols for python3-geohash.
+ 

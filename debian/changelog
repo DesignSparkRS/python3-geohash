@@ -1,0 +1,7 @@
+python3-geohash (0.8.5-1) unstable; urgency=medium
+
+  * Latest upstream release
+  * Add packaging based on the latest Debian package (Python 2)
+
+ -- Andrew Back <andrew@abopen.com>  Sun, 13 Nov 2022 18:32:00 +0000
+ 
